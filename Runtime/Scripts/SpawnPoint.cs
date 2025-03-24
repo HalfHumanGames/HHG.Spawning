@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     [Serializable]
     public class SpawnPoint : ICloneable<SpawnPoint>

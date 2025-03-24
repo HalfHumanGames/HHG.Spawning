@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     [Serializable]
     public class SpawnWaves

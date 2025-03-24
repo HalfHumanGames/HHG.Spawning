@@ -1,7 +1,7 @@
 using HHG.Common.Runtime;
 using System;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     public interface ISpawn
     {

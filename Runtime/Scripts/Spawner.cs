@@ -2,7 +2,7 @@ using HHG.Common.Runtime;
 using System;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     public class Spawner : MonoBehaviour
     {

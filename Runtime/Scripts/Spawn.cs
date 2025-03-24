@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     public class Spawn
     {

@@ -1,5 +1,5 @@
 ﻿using HHG.Common.Runtime;
-using HHG.SpawnSystem.Runtime;
+using HHG.Spawning.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace HHG.SpawnSystem.Editor
+namespace HHG.Spawning.Editor
 {
     [CustomPropertyDrawer(typeof(SpawnWaves))]
     public class SpawnWavesDrawer : PropertyDrawer

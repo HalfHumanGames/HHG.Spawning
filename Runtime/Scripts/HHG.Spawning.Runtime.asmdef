@@ -1,7 +1,9 @@
 {
-    "name": "HHG.SpawnSystem.Runtime",
-    "rootNamespace": "HHG.SpawnSystem.Runtime",
+    "name": "HHG.Spawning.Runtime",
+    "rootNamespace": "HHG.Spawning.Runtime",
     "references": [
+        "GUID:696a0953692949b40bec8730e64e1fdd",
+        "GUID:49b49c76ee64f6b41bf28ef951cb0e50",
         "GUID:8413476b1284ef74fa7300662f10cca9"
     ],
     "includePlatforms": [],

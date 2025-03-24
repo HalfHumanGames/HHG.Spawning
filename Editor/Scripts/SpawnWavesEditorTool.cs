@@ -1,12 +1,12 @@
 ﻿using HHG.Common.Runtime;
-using HHG.SpawnSystem.Runtime;
+using HHG.Spawning.Runtime;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Editor
+namespace HHG.Spawning.Editor
 {
     [EditorTool("Spawn Waves Editor")]
     public class SpawnWavesEditorTool : EditorTool

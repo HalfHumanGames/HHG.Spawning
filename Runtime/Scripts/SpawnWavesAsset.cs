@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     [CreateAssetMenu(fileName = "Spawn Waves", menuName = "HHG/Spawn System/Spawn Waves")]
     public class SpawnWavesAsset : ScriptableObject

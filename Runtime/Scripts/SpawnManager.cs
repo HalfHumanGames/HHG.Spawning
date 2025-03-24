@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HHG.SpawnSystem.Runtime
+namespace HHG.Spawning.Runtime
 {
     public abstract class SpawnManager : MonoBehaviour
     {
@@ -140,7 +140,7 @@ namespace HHG.SpawnSystem.Runtime
             // Do initial check so don't create unnecessary coroutines
             // This won't work if spawner has a start delay, but we'll
             // worry about that scenario later since it's an edge case
-            if (IsDoneSpawning())
+            if (IsDoneSpawning() && CoroutineUtil.Coroutiner != null)
             {
                 // Wait a frame in case killed spawned spawns childs spawns
                 CoroutineUtil.Coroutiner.NextFrame(_ => CheckIfDoneSpawningSingleCheck());

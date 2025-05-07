@@ -78,7 +78,10 @@ namespace HHG.Spawning.Runtime
             {
                 spawnBatchCount = 0;
 
-                if (isDone || !enabled)
+                // Probably not the best way to handle
+                // this since waits forever after done
+                // But good enough for now
+                while (isDone || !enabled)
                 {
                     yield return new WaitForEndOfFrame();
                 }

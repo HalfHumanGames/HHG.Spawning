@@ -1,10 +1,12 @@
 ﻿using HHG.Common.Runtime;
 using HHG.Spawning.Runtime;
+using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HHG.Spawning.Editor
 {
@@ -29,7 +31,15 @@ namespace HHG.Spawning.Editor
             {
                 if (_manager == null)
                 {
-                    _manager = ObjectUtil.FindComponentInScene<SpawnManager>();
+                    foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
+                    {
+                        _manager = root.GetComponentInChildren<SpawnManager>(true);
+
+                        if (_manager != null)
+                        {
+                            break;
+                        }
+                    }
                 }
                 return _manager;
             }

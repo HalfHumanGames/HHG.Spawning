@@ -37,19 +37,30 @@ namespace HHG.Spawning.Runtime
 
         public IEnumerator SpawnAsync(Transform transform, Func<float> timeScale)
         {
+            if (transform == null) { Debug.LogError("'transform' is null.", transform); yield break; }
+            if (timeScale == null) { Debug.LogError("'timeScale' is null.", transform); yield break; }
+
             int loop = loopCount;
 
             Vector3 position = transform.position;
 
             do
             {
+                if (waves == null) { Debug.LogError("'waves' is null.", transform); yield break; }
+
                 for (int w = 0; w < waves.Count; w++)
                 {
+                    if (waves[w] == null) { Debug.LogError("'waves[w]' is null.", transform); yield break; }
+
                     yield return new WaitForSecondsScaled(waves[w].Delay, timeScale);
+
                     for (int s = 0; s < waves[w].Count; s++)
                     {
+                        if (waves[w].Spawn == null) { Debug.LogError("'waves[w].Spawn' is null.", transform); yield break; }
+
                         Spawn spawn = new Spawn(waves[w].Spawn, transform != null ? transform.position : position);
                         create(spawn);
+
                         yield return new WaitForSecondsScaled(waves[w].Frequency, timeScale);
                     }
                 }

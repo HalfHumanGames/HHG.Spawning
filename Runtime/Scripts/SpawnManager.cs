@@ -19,7 +19,7 @@ namespace HHG.Spawning.Runtime
         public IDataProxy<float> Timer { get; private set; }
         public bool IsDone => isDone;
 
-        private GameObjectPool<TSpawn> pool;
+        private Prototype prototype;
         private List<TSpawn> allSpawns = new List<TSpawn>();
         private List<TSpawn> newSpawns = new List<TSpawn>();
         private Queue<Spawn> spawnQueue = new Queue<Spawn>();
@@ -50,7 +50,7 @@ namespace HHG.Spawning.Runtime
         protected virtual void Awake()
         {
             settings = GetSettings();
-            pool = new GameObjectPool<TSpawn>(GetPrefabTemplate(), transform, Debug.isDebugBuild, settings.PoolDefaultCapacity, settings.PoolMaxSize, settings.PoolPrewarm);
+            prototype = GetPrefabTemplate().GetOrAddComponent<Prototype>();
             Wave = new DataProxy<int>(() => wave, v => wave = v);
             Timer = new DataProxy<float>(() => timer, v => timer = v);
             Timer.Value = GetWaveDuration(Wave.Value) - GetFirstWaveDelay();
@@ -173,7 +173,7 @@ namespace HHG.Spawning.Runtime
                     newSpawns.Clear();
                     foreach (Vector3 offset in spawn.Asset.GetSpawnOffsets())
                     {
-                        TSpawn instance = pool.Get();
+                        TSpawn instance = prototype.Instantiate<TSpawn>();
                         instance.transform.position = spawn.Position + offset;
                         instance.Initialize(spawn); // Initialize after set position
                         instance.gameObject.SetActive(true); // Set active after initialize
@@ -239,7 +239,8 @@ namespace HHG.Spawning.Runtime
 
             // Components get destroyed at the end of the update loop, so we
             // add a 2 frame delay to prevent any weird issues from occuring
-            pool.Release(spawn, 2);
+            //prototype.Release(spawn, 2);
+            spawn.GetComponent<Prototype>().ReturnToPool();
 
             allSpawns.Remove(spawn);
             OnDespawn(spawn);
